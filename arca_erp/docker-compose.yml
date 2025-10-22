@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: gunicorn arca_erp.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      - DJANGO_SETTINGS_MODULE=arca_erp.settings.prod
+
+  db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=arca_erp
+      - POSTGRES_USER=arca_user
+      - POSTGRES_PASSWORD=password
+
+  redis:
+    image: redis:6.2-alpine
+
+volumes:
+  postgres_data:
