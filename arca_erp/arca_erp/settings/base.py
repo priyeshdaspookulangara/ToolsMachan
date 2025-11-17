@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'apps.core.data_hub.apps.DataHubConfig',
     'apps.core.event_core.apps.EventCoreConfig',
     'apps.core.service_bridge.apps.ServiceBridgeConfig',
+    'apps.core.auth_core.apps.AuthCoreConfig',
     'apps.business.asset_care.apps.AssetCareConfig',
     'apps.business.cost_mgmt.apps.CostMgmtConfig',
     'apps.business.finance_core.apps.FinanceCoreConfig',
@@ -164,3 +165,9 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'UTC'
+
+# Swagger
+SWAGGER_SETTINGS = {
+    'LOGIN_URL': '/api/auth/session/login/',
+    'LOGOUT_URL': '/api/auth/session/logout/',
+}
