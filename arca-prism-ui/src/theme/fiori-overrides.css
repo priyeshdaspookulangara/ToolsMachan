@@ -1,0 +1,4 @@
+/* Add any Fiori overrides here */
+body {
+  font-family: var(--sap-font-family);
+}
