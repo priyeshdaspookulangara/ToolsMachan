@@ -14,6 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # Application definition
 
 INSTALLED_APPS = [
+    "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -131,6 +132,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -170,4 +172,31 @@ CELERY_TIMEZONE = 'UTC'
 SWAGGER_SETTINGS = {
     'LOGIN_URL': '/api/auth/session/login/',
     'LOGOUT_URL': '/api/auth/session/logout/',
+}
+
+JAZZMIN_SETTINGS = {
+    "site_title": "ARCA ERP Admin",
+    "site_header": "ARCA ERP",
+    "site_brand": "ARCA ERP",
+    "welcome_sign": "Welcome to ARCA ERP",
+    "copyright": "ARCA Systems Ltd.",
+    "topmenu_links": [
+        {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": "Finance", "url": "/admin/finance_core/", "permissions": ["auth.view_user"]},
+    ],
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "order_with_respect_to": ["auth", "finance_core", "people_ops", "order_mgmt", "material_core"],
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        "finance_core.account": "fas fa-university",
+        "finance_core.journalentry": "fas fa-book",
+        "finance_core.transaction": "fas fa-exchange-alt",
+    },
+    "default_icon_parents": "fas fa-chevron-circle-right",
+    "default_icon_children": "fas fa-circle",
+    "related_modal_active": False,
+    "show_ui_builder": True
 }
