@@ -39,6 +39,7 @@ urlpatterns = [
 
     # Human & Organizational
     path('api/people_ops/', include('apps.hr.people_ops.urls')),
+    path('api/employee_changes/', include('apps.hr.employee_changes.urls')),
     path('api/talent_hub/', include('apps.hr.talent_hub.urls')),
     path('api/org_core/', include('apps.hr.org_core.urls')),
 
