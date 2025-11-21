@@ -38,10 +38,9 @@ urlpatterns = [
     path('api/quality_core/', include('apps.business.quality_core.urls')),
 
     # Human & Organizational
-    path('api/people_ops/', include('apps.hr.people_ops.urls')),
-    path('api/employee_changes/', include('apps.hr.employee_changes.urls')),
+    path('api/people_core/', include('apps.hr.people_core.urls')),
+    path('api/data_change/', include('apps.hr.data_change.urls')),
     path('api/talent_hub/', include('apps.hr.talent_hub.urls')),
-    path('api/org_core/', include('apps.hr.org_core.urls')),
 
     # Customer & Retail
     path('api/customer_360/', include('apps.retail.customer_360.urls')),
