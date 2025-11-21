@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.hr.org_core.apps.OrgCoreConfig',
     'apps.hr.people_ops.apps.PeopleOpsConfig',
     'apps.hr.talent_hub.apps.TalentHubConfig',
+    'apps.hr.employee_changes.apps.EmployeeChangesConfig',
     'apps.retail.checkout.apps.CheckoutConfig',
     'apps.retail.customer_360.apps.Customer360Config',
     'apps.retail.lead_ops.apps.LeadOpsConfig',
