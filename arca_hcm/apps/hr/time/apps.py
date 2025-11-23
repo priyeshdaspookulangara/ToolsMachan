@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
-class TimeEngineConfig(AppConfig):
+class TimeConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.hr.time_engine'
+    name = 'apps.hr.time'

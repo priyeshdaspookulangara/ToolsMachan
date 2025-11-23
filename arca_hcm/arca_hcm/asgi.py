@@ -1,5 +1,5 @@
 """
-ASGI config for arca_erp project.
+ASGI config for arca_hcm project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "arca_erp.settings.dev")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "arca_hcm.settings.dev")
 
 application = get_asgi_application()
