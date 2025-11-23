@@ -1,35 +1,53 @@
-from rest_framework import viewsets
-from .models import Employee, Department, Position, Job, EmploymentHistory, Education, Document, BankDetails
-from .serializers import EmployeeSerializer, DepartmentSerializer, PositionSerializer, JobSerializer, EmploymentHistorySerializer, EducationSerializer, DocumentSerializer, BankDetailsSerializer
+from rest_framework import viewsets, status
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from .models import (
+    Employee, Employment, OrganizationalUnit, Position,
+    AssignmentHistory, CompensationStructureMeta
+)
+from .serializers import (
+    EmployeeSerializer, EmploymentSerializer, OrganizationalUnitSerializer,
+    PositionSerializer, AssignmentHistorySerializer, CompensationStructureMetaSerializer
+)
 
 class EmployeeViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
 
-class DepartmentViewSet(viewsets.ModelViewSet):
-    queryset = Department.objects.all()
-    serializer_class = DepartmentSerializer
+class EmploymentViewSet(viewsets.ModelViewSet):
+    queryset = Employment.objects.all()
+    serializer_class = EmploymentSerializer
+
+class OrganizationalUnitViewSet(viewsets.ModelViewSet):
+    queryset = OrganizationalUnit.objects.all()
+    serializer_class = OrganizationalUnitSerializer
+
+    @action(detail=False, methods=['get'])
+    def tree(self, request):
+        """
+        Returns the organizational structure as a nested tree.
+        """
+        roots = OrganizationalUnit.objects.filter(parent__isnull=True)
+        data = []
+        for root in roots:
+            data.append(self._get_node_data(root))
+        return Response(data)
+
+    def _get_node_data(self, node):
+        return {
+            'id': node.org_id,
+            'name': node.name,
+            'children': [self._get_node_data(child) for child in node.organizationalunit_set.all()]
+        }
 
 class PositionViewSet(viewsets.ModelViewSet):
     queryset = Position.objects.all()
     serializer_class = PositionSerializer
 
-class JobViewSet(viewsets.ModelViewSet):
-    queryset = Job.objects.all()
-    serializer_class = JobSerializer
+class AssignmentHistoryViewSet(viewsets.ModelViewSet):
+    queryset = AssignmentHistory.objects.all()
+    serializer_class = AssignmentHistorySerializer
 
-class EmploymentHistoryViewSet(viewsets.ModelViewSet):
-    queryset = EmploymentHistory.objects.all()
-    serializer_class = EmploymentHistorySerializer
-
-class EducationViewSet(viewsets.ModelViewSet):
-    queryset = Education.objects.all()
-    serializer_class = EducationSerializer
-
-class DocumentViewSet(viewsets.ModelViewSet):
-    queryset = Document.objects.all()
-    serializer_class = DocumentSerializer
-
-class BankDetailsViewSet(viewsets.ModelViewSet):
-    queryset = BankDetails.objects.all()
-    serializer_class = BankDetailsSerializer
+class CompensationStructureMetaViewSet(viewsets.ModelViewSet):
+    queryset = CompensationStructureMeta.objects.all()
+    serializer_class = CompensationStructureMetaSerializer

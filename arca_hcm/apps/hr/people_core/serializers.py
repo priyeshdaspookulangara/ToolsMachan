@@ -1,14 +1,22 @@
 from rest_framework import serializers
-from .models import Employee, Department, Position, Job, EmploymentHistory, Education, Document, BankDetails
+from .models import (
+    Employee, Employment, OrganizationalUnit, Position,
+    AssignmentHistory, CompensationStructureMeta
+)
 
 class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
         fields = '__all__'
 
-class DepartmentSerializer(serializers.ModelSerializer):
+class EmploymentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Department
+        model = Employment
+        fields = '__all__'
+
+class OrganizationalUnitSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrganizationalUnit
         fields = '__all__'
 
 class PositionSerializer(serializers.ModelSerializer):
@@ -16,27 +24,12 @@ class PositionSerializer(serializers.ModelSerializer):
         model = Position
         fields = '__all__'
 
-class JobSerializer(serializers.ModelSerializer):
+class AssignmentHistorySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Job
+        model = AssignmentHistory
         fields = '__all__'
 
-class EmploymentHistorySerializer(serializers.ModelSerializer):
+class CompensationStructureMetaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = EmploymentHistory
-        fields = '__all__'
-
-class EducationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Education
-        fields = '__all__'
-
-class DocumentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Document
-        fields = '__all__'
-
-class BankDetailsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = BankDetails
+        model = CompensationStructureMeta
         fields = '__all__'
