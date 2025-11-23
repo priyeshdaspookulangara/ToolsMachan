@@ -17,7 +17,7 @@ class CanRequestChange(BasePermission):
     Allows employees to request changes for themselves.
     """
     def has_object_permission(self, request, view, obj):
-        return obj.work_email == request.user.email
+        return obj.email_official == request.user.email
 
 class CanApproveChange(BasePermission):
     """

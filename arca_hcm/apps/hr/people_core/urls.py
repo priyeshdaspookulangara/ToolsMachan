@@ -1,17 +1,15 @@
 from rest_framework.routers import DefaultRouter
 from .views import (
-    EmployeeViewSet, DepartmentViewSet, PositionViewSet, JobViewSet,
-    EmploymentHistoryViewSet, EducationViewSet, DocumentViewSet, BankDetailsViewSet
+    EmployeeViewSet, EmploymentViewSet, OrganizationalUnitViewSet, PositionViewSet,
+    AssignmentHistoryViewSet, CompensationStructureMetaViewSet
 )
 
 router = DefaultRouter()
 router.register(r'employees', EmployeeViewSet)
-router.register(r'departments', DepartmentViewSet)
+router.register(r'employment', EmploymentViewSet)
+router.register(r'org/units', OrganizationalUnitViewSet)
 router.register(r'positions', PositionViewSet)
-router.register(r'jobs', JobViewSet)
-router.register(r'employment-history', EmploymentHistoryViewSet)
-router.register(r'education', EducationViewSet)
-router.register(r'documents', DocumentViewSet)
-router.register(r'bank-details', BankDetailsViewSet)
+router.register(r'assignments', AssignmentHistoryViewSet)
+router.register(r'compensation-structures', CompensationStructureMetaViewSet)
 
 urlpatterns = router.urls
