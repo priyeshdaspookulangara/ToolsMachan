@@ -44,11 +44,12 @@ INSTALLED_APPS = [
     'apps.business.warehouse_x.apps.WarehouseXConfig',
     'apps.hr.people_core.apps.PeopleCoreConfig',
     'apps.hr.data_change.apps.DataChangeConfig',
-    'apps.hr.time_engine.apps.TimeEngineConfig',
+    'apps.hr.time.apps.TimeConfig',
     'apps.hr.benefits.apps.BenefitsConfig',
     'apps.hr.ess.apps.EssConfig',
     'apps.hr.mss.apps.MssConfig',
     'apps.hr.analytics.apps.AnalyticsConfig',
+    'apps.hr.payroll.apps.PayrollConfig',
     'apps.hr.talent_hub.apps.TalentHubConfig',
     'apps.retail.checkout.apps.CheckoutConfig',
     'apps.retail.customer_360.apps.Customer360Config',
@@ -80,7 +81,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "arca_erp.urls"
+ROOT_URLCONF = "arca_hcm.urls"
 
 TEMPLATES = [
     {
@@ -97,8 +98,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "arca_erp.wsgi.application"
-ASGI_APPLICATION = "arca_erp.asgi.application"
+WSGI_APPLICATION = "arca_hcm.wsgi.application"
+ASGI_APPLICATION = "arca_hcm.asgi.application"
 
 
 # Password validation
