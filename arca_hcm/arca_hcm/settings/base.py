@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'apps.hr.mss.apps.MssConfig',
     'apps.hr.analytics.apps.AnalyticsConfig',
     'apps.hr.payroll.apps.PayrollConfig',
+    'apps.hr.recruitment.apps.RecruitmentConfig',
     'apps.hr.talent_hub.apps.TalentHubConfig',
     'apps.retail.checkout.apps.CheckoutConfig',
     'apps.retail.customer_360.apps.Customer360Config',
