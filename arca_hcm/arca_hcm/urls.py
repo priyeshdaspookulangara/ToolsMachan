@@ -42,6 +42,7 @@ urlpatterns = [
     path('api/data_change/', include('apps.hr.data_change.urls')),
     path('api/time/', include('apps.hr.time.urls')),
     path('api/benefits/', include('apps.hr.benefits.urls')),
+    path('api/recruitment/', include('apps.hr.recruitment.urls')),
     path('api/talent_hub/', include('apps.hr.talent_hub.urls')),
 
     # Customer & Retail
